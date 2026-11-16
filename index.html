@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff5f7">
+<title>Un ramito para Indi 🌷</title>
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --ink: #713e55;
+    --pink: #b94f79;
+  }
+  body {
+    margin: 0;
+    min-height: 100svh;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse at 15% 20%, #fbe0e8 0, transparent 45%),
+      radial-gradient(ellipse at 90% 75%, #f8e4ed 0, transparent 45%),
+      #fff8f9;
+    font-family: Georgia, "Times New Roman", serif;
+    text-align: center;
+    overflow-x: hidden;
+  }
+  main {
+    width: min(100% - 36px, 650px);
+    margin: auto;
+    padding: 48px 0 32px;
+    position: relative;
+  }
+  .eyebrow, button, footer, .hint {
+    font-family: system-ui, sans-serif;
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #a97989;
+  }
+  h1 {
+    font-size: clamp(42px, 9vw, 68px);
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 1.08;
+    margin: 20px 0 14px;
+  }
+  h1 em { color: var(--pink); }
+  .intro {
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 380px;
+    color: #946b7b;
+  }
+  .bouquet {
+    position: relative;
+    width: min(100%, 430px);
+    margin: -8px auto -22px;
+    animation: arrive 1.6s ease both;
+  }
+  svg { width: 100%; display: block; overflow: visible; }
+  .flowers {
+    transform-origin: 210px 395px;
+    animation: sway 6s ease-in-out infinite;
+  }
+  .sparkle {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: twinkle 3s ease-in-out infinite alternate;
+  }
+  .sparkle:nth-child(even) { animation-delay: -1.6s; }
+  button {
+    border: 1px solid #dba3b5;
+    border-radius: 100px;
+    background: #fffafbcc;
+    color: #984a69;
+    padding: 15px 26px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px #b9718a12;
+    transition: background .25s, transform .25s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:hover { background: #ffe7ef; transform: translateY(-3px); }
+  button:focus-visible { outline: 3px solid #ba718d; outline-offset: 5px; }
+  .hint { font-size: 11px; color: #aa8190; margin: 14px 0 0; }
+  .letter {
+    margin: 30px auto 0;
+    max-width: 470px;
+    padding: 30px 28px;
+    background: #ffffffb3;
+    border: 1px solid #efdce2;
+    border-radius: 8px;
+    box-shadow: 0 15px 50px #9861740c;
+    position: relative;
+  }
+  .letter[hidden] { display: none; }
+  .letter.open { animation: arrive .8s ease both; }
+  .letter::before {
+    content: "♡";
+    position: absolute;
+    top: -15px;
+    left: calc(50% - 15px);
+    width: 30px;
+    background: #fff8f9;
+    color: #bc6687;
+    font-size: 25px;
+  }
+  .letter h2 { font-size: 27px; font-weight: 400; margin: 0 0 18px; }
+  .letter p { font-size: 17px; line-height: 1.85; margin: 0 0 16px; }
+  .letter .signature { margin: 24px 0 0; font-style: italic; color: var(--pink); }
+  footer {
+    margin-top: 36px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #af8795;
+  }
+  .petal {
+    position: fixed;
+    top: -30px;
+    z-index: 3;
+    width: 11px;
+    height: 17px;
+    background: #ecadc4;
+    border-radius: 80% 10% 75% 20%;
+    pointer-events: none;
+    animation: fall linear forwards;
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-1.5deg); }
+    50% { transform: rotate(1.5deg); }
+  }
+  @keyframes arrive {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes twinkle {
+    from { opacity: .25; transform: scale(.7); }
+    to { opacity: .85; transform: scale(1.1); }
+  }
+  @keyframes fall {
+    from { transform: translate3d(0,-30px,0) rotate(0); opacity: 0; }
+    10% { opacity: .7; }
+    to { transform: translate3d(65px,105vh,0) rotate(310deg); opacity: 0; }
+  }
+  @media (max-width: 420px) {
+    main { padding-top: 35px; }
+    .intro { font-size: 16px; }
+    .letter { padding: 30px 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Un detallito para ti</div>
+  <h1>Para ti, <em>Indi.</em></h1>
+  <p class="intro">
+    Un ramito de tulipanes rosados<br>
+    y un abrazo de esos que hacen bien.
+  </p>
+
+  <div class="bouquet">
+    <svg viewBox="0 0 420 480" role="img"
+         aria-label="Ramo de siete tulipanes rosados envuelto en papel y atado con un lazo">
+      <defs>
+        <linearGradient id="pink" x1="0" y1="0" x2="1" y2="1">
+          <stop stop-color="#ffd6e3"/>
+          <stop offset=".55" stop-color="#ef91b3"/>
+          <stop offset="1" stop-color="#cf5a8a"/>
+        </linearGradient>
+        <linearGradient id="front" x1="0" y1="0" x2="1" y2=".5">
+          <stop stop-color="#f8b2ca"/>
+          <stop offset=".5" stop-color="#f6a0c0"/>
+          <stop offset="1" stop-color="#de729f"/>
+        </linearGradient>
+        <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="0">
+          <stop stop-color="#587c60"/>
+          <stop offset="1" stop-color="#9dbb8e"/>
+        </linearGradient>
+        <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+          <stop stop-color="#f6e7dc"/>
+          <stop offset="1" stop-color="#dfbfae"/>
+        </linearGradient>
+        <g id="tulip">
+          <path d="M0 15 Q-9 95 0 210"
+                fill="none" stroke="#76946e" stroke-width="5"
+                stroke-linecap="round"/>
+          <path d="M0 160 Q-51 130 -45 72 Q-13 85 0 160"
+                fill="url(#leaf)"/>
+          <path d="M0 188 Q48 145 39 105 Q11 119 0 188"
+                fill="url(#leaf)"/>
+          <path d="M0 23 C-26 21 -32 -13 -20 -39
+                   Q-8 -34 0 -18 Q8 -34 20 -39
+                   C32 -13 26 21 0 23"
+                fill="url(#pink)"/>
+          <path d="M0 23 Q-31 14 -22 -29 Q1 -22 8 4 Q12 19 0 23"
+                fill="url(#front)"/>
+          <path d="M0 23 Q29 16 22 -29 Q0 -19 -4 4 Q-9 18 0 23"
+                fill="url(#pink)"/>
+          <path d="M0 22 Q-12 7 0 -25 Q14 7 0 22"
+                fill="url(#front)" opacity=".85"/>
+        </g>
+      </defs>
+
+      <ellipse cx="210" cy="449" rx="83" ry="10" fill="#d6a0b5" opacity=".12"/>
+
+      <g fill="#ca8ea7">
+        <path class="sparkle" d="M65 125 l3 8 8 3-8 3-3 8-3-8-8-3 8-3Z"/>
+        <path class="sparkle" d="M348 181 l3 8 8 3-8 3-3 8-3-8-8-3 8-3Z"/>
+        <path class="sparkle" d="M291 62 l2 6 6 2-6 2-2 6-2-6-6-2 6-2Z"/>
+        <circle class="sparkle" cx="95" cy="238" r="2"/>
+        <circle class="sparkle" cx="330" cy="107" r="2"/>
+        <circle class="sparkle" cx="157" cy="54" r="2"/>
+      </g>
+
+      <!-- Papel de fondo -->
+      <path d="M89 244 L158 215 L218 256 L285 214 L334 250
+               L251 423 L190 438Z"
+            fill="#f6ebe3" stroke="#e9d5c9"/>
+
+      <g class="flowers">
+        <use href="#tulip" transform="translate(151 164) rotate(-25) scale(.92)"/>
+        <use href="#tulip" transform="translate(265 151) rotate(23) scale(.96)"/>
+        <use href="#tulip" transform="translate(207 110) scale(1.07)"/>
+        <use href="#tulip" transform="translate(171 132) rotate(-11)"/>
+        <use href="#tulip" transform="translate(246 123) rotate(13)"/>
+        <use href="#tulip" transform="translate(186 191) rotate(-13) scale(.91)"/>
+        <use href="#tulip" transform="translate(238 185) rotate(14) scale(.93)"/>
+      </g>
+
+      <!-- Envoltura -->
+      <path d="M89 244 Q146 265 238 354 L251 423 L190 438Z"
+            fill="url(#paper)" stroke="#dec2b2"/>
+      <path d="M334 250 Q282 276 194 358 L190 438 L251 423Z"
+            fill="#f3dfd2" stroke="#e2c8b7"/>
+      <path d="M108 259 Q160 307 196 362"
+            fill="none" stroke="#fff6ed" stroke-width="2" opacity=".65"/>
+      <path d="M316 269 Q271 303 234 348"
+            fill="none" stroke="#fff9f0" stroke-width="2" opacity=".7"/>
+
+      <!-- Lazo -->
+      <path d="M182 365 Q216 376 252 362"
+            fill="none" stroke="#c9819a" stroke-width="9"/>
+      <path d="M215 370 C155 329 153 393 215 370
+               C267 324 283 388 215 370"
+            fill="#e6a1b8" stroke="#bf7892" stroke-width="2"/>
+      <path d="M212 374 Q199 402 184 410 L188 393 L177 392
+               Q199 380 212 374"
+            fill="#cf8ca4"/>
+      <path d="M219 374 Q235 398 248 401 L241 387 L254 386
+               Q233 380 219 374"
+            fill="#da98af"/>
+      <ellipse cx="216" cy="370" rx="8" ry="7" fill="#ba718d"/>
+    </svg>
+  </div>
+
+  <button id="open" aria-expanded="false" aria-controls="letter">
+    Tengo algo que decirte ♡
+  </button>
+  <p class="hint">Hecho con cariño, pensando en ti.</p>
+
+  <article id="letter" class="letter" hidden>
+    <h2>Indi,</h2>
+    <p>
+      Sé que ahorita la estás pasando mal y me gustaría poder
+      hacer algo para que todo se sienta un poquito más llevadero.
+      Por ahora, te mando estas flores y un abrazo enorme.
+    </p>
+    <p>
+      Espero de corazón que pronto te sientas mejor.
+      Mientras tanto, ve a tu ritmo, descansa y no te exijas
+      estar bien todo el tiempo.
+    </p>
+    <p>
+      Y que no se te olvide: si pasa algo, <strong>aquí estoy para ti</strong>.
+      Si quieres hablar, distraerte un rato o simplemente tener
+      compañía, cuenta conmigo.
+    </p>
+    <p>
+      No tienes que responder esto ahora.
+      Solo quería sacarte una sonrisita y recordarte
+      que me importas mucho. 🌷
+    </p>
+    <p class="signature">Con mucho cariño,<br>Will</p>
+  </article>
+
+  <footer>UN ABRACITO, INCLUSO A LA DISTANCIA</footer>
+</main>
+
+<script>
+  const button = document.getElementById("open");
+  const letter = document.getElementById("letter");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function petals() {
+    if (reducedMotion.matches) return;
+    for (let i = 0; i < 22; i++) {
+      const petal = document.createElement("span");
+      petal.className = "petal";
+      petal.setAttribute("aria-hidden", "true");
+      petal.style.left = Math.random() * 95 + "vw";
+      petal.style.animationDuration = 5 + Math.random() * 4 + "s";
+      petal.style.animationDelay = Math.random() * 2 + "s";
+      petal.addEventListener("animationend", () => petal.remove(), { once: true });
+      document.body.appendChild(petal);
+    }
+  }
+
+  button.addEventListener("click", () => {
+    const opening = letter.hidden;
+    letter.hidden = !opening;
+    letter.classList.toggle("open", opening);
+    button.setAttribute("aria-expanded", String(opening));
+    button.textContent = opening
+      ? "Guardar la cartita ♡"
+      : "Tengo algo que decirte ♡";
+
+    if (opening) {
+      petals();
+      requestAnimationFrame(() => {
+        letter.scrollIntoView({
+          behavior: reducedMotion.matches ? "instant" : "smooth",
+          block: "nearest"
+        });
+      });
+    }
+  });
+</script>
+</body>
+</html>
