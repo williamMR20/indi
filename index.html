@@ -294,7 +294,10 @@
 
   <footer>UN ABRACITO, INCLUSO A LA DISTANCIA</footer>
 </main>
-
+    <audio id="music" loop preload="metadata" controls>
+  <source src="./musica.mp3" type="audio/mpeg">
+  Tu navegador no permite reproducir este audio.
+</audio>
 <script>
   const button = document.getElementById("open");
   const letter = document.getElementById("letter");
@@ -333,6 +336,17 @@
       });
     }
   });
+  const music = document.getElementById("music");
+music.volume = 0.25;
+
+button.addEventListener("click", () => {
+  // Inicia la música al abrir la carta.
+  if (!letter.hidden && music.paused) {
+    music.play().catch(() => {
+      // Si se bloquea, puede iniciarla desde los controles.
+    });
+  }
+});
 </script>
 </body>
 </html>
